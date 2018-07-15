@@ -1,7 +1,7 @@
 baseEcommerce
 =============
 
-A Symfony project created on July 15, 2018, 2:55 am.
+A Symfony project created on July 15, 2018, 12:55 am.
 ## Initialisation du projet :
 * Modification du fichier app/config/parameters.yml
 ```yaml
