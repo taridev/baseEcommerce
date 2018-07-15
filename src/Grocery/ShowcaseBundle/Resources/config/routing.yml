@@ -1,0 +1,7 @@
+showcase:
+    resource: "@ShowcaseBundle/Resources/config/routing/article.yml"
+    prefix:   /
+
+showcase_homepage:
+    path:     /
+    defaults: { _controller: ShowcaseBundle:Default:index }

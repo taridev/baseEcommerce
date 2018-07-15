@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Articles list</h1>
+
+
+    <ul>
+        <li><a href="{{ path('_index') }}"{% if app.request.attributes.get('category') == null %} class="active"{% endif %}>tous les articles</a></li>
+        {% for category in categories %}
+
+        <li><a href="{{ path('_filter_category', {'category': category}) }}"{% if app.request.attributes.get('category') == category %} class="active"{% endif %}>{{ category }}</a></li>
+        {% endfor %}
+
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Link</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td><a href="{{ path('_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                <td><img src="{{ article.link }}" width="150"></td>
+                <td>{{ article.description }}</td>
+                <td>{{ article.price }}</td>
+                <td>{{ article.quantity }}</td>
+                <td>{{ article.category }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('_show', { 'id': article.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('_edit', { 'id': article.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
