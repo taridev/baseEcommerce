@@ -47,7 +47,7 @@ Are you planning on sharing this bundle across multiple applications? [no]: no
 Give your bundle a descriptive name, like BlogBundle.
 Bundle name: Grocery/ShowcaseBundle
 ``` 
-Pour a part il appartient au namespace Grocery et s'appelle ShowcaseBundle (la règle veut qu'il se termine par Bundle).
+Pour ma part il appartient au namespace Grocery et s'appelle ShowcaseBundle (la règle veut qu'il se termine par Bundle).
 
 ```
 Bundle name [GroceryShowcaseBundle]: ShowcaseBundle
@@ -239,7 +239,7 @@ Si vous vous rendez maintenant sur [http://localhost:8000](http://localhost:8000
 
 ### Création de la route : 
 
-On veut pouvoir selectioner tous les articles d'une catégorie (par exemple fresh) et les afficher à l'adresse : [http://localhost/fresh](http://localhost/fresh)
+On veut pouvoir selectioner tous les articles d'une catégorie (par exemple fresh) et les afficher à l'adresse : [http://localhost:8000/fresh](http://localhost:8000/fresh)
 * Dans le fichier __app/src/Grocery/ShowcaseBundle/Resources/config/routing/article.yml__ ajouter la route suivante :
 ```yml
 _filter_category:
