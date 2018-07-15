@@ -8,22 +8,22 @@ _show:
     defaults: { _controller: "ShowcaseBundle:Article:show" }
     methods:  GET
 
-#_new:
-#    path:     /new
-#    defaults: { _controller: "ShowcaseBundle:Article:new" }
-#    methods:  [GET, POST]
+_new:
+    path:     /new
+    defaults: { _controller: "ShowcaseBundle:Article:new" }
+    methods:  [GET, POST]
 
 _edit:
     path:     /{id}/edit
     defaults: { _controller: "ShowcaseBundle:Article:edit" }
     methods:  [GET, POST]
 
+_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ShowcaseBundle:Article:delete" }
+    methods:  DELETE
+
 _filter_category:
-    path:     /{category}
+    path:     /category/{category}
     defaults: { _controller: "ShowcaseBundle:Article:filterCategory" }
     methods:  GET
-
-#_delete:
-#    path:     /{id}/delete
-#    defaults: { _controller: "ShowcaseBundle:Article:delete" }
-#    methods:  DELETE

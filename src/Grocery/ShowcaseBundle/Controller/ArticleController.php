@@ -19,10 +19,10 @@ class ArticleController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $articles = $em->getRepository('ShowcaseBundle:Article')->findAll();
         $categories = $em->getRepository('ShowcaseBundle:Article')
             ->getCategories();
+        $articles = $em->getRepository('ShowcaseBundle:Article')
+            ->findAll();
 
         return $this->render('article/index.html.twig', array(
             'articles' => $articles,
@@ -30,19 +30,22 @@ class ArticleController extends Controller
         ));
     }
 
+    /**
+     * Lists all article entities.
+     *
+     */
     public function filterCategoryAction($category)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $articles = $em->getRepository('ShowcaseBundle:Article')
-            ->findBy(array('category' => $category));
         $categories = $em->getRepository('ShowcaseBundle:Article')
             ->getCategories();
+        $articles = $em->getRepository('ShowcaseBundle:Article')
+            ->findBy(array('category' => $category));
 
         return $this->render('article/index.html.twig', array(
             'articles' => $articles,
             'categories' => $categories
-        ));
+    ));
     }
 
     /**
@@ -71,16 +74,15 @@ class ArticleController extends Controller
 
     /**
      * Finds and displays a article entity.
-     * @param Article
-     * @return
+     *
      */
     public function showAction(Article $article)
     {
-        //$deleteForm = $this->createDeleteForm($article);
+        $deleteForm = $this->createDeleteForm($article);
 
         return $this->render('article/show.html.twig', array(
             'article' => $article,
-            //'delete_form' => $deleteForm->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -90,7 +92,7 @@ class ArticleController extends Controller
      */
     public function editAction(Request $request, Article $article)
     {
-        //$deleteForm = $this->createDeleteForm($article);
+        $deleteForm = $this->createDeleteForm($article);
         $editForm = $this->createForm('Grocery\ShowcaseBundle\Form\ArticleType', $article);
         $editForm->handleRequest($request);
 
@@ -103,7 +105,7 @@ class ArticleController extends Controller
         return $this->render('article/edit.html.twig', array(
             'article' => $article,
             'edit_form' => $editForm->createView(),
-            //'delete_form' => $deleteForm->createView(),
+            'delete_form' => $deleteForm->createView(),
         ));
     }
 

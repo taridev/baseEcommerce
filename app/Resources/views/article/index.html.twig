@@ -3,15 +3,15 @@
 {% block body %}
     <h1>Articles list</h1>
 
-
     <ul>
         <li><a href="{{ path('_index') }}"{% if app.request.attributes.get('category') == null %} class="active"{% endif %}>tous les articles</a></li>
         {% for category in categories %}
 
-        <li><a href="{{ path('_filter_category', {'category': category}) }}"{% if app.request.attributes.get('category') == category %} class="active"{% endif %}>{{ category }}</a></li>
+            <li><a href="{{ path('_filter_category', {'category': category}) }}">{{ category }}</a></li>
         {% endfor %}
 
     </ul>
+
     <table>
         <thead>
             <tr>
@@ -28,7 +28,7 @@
         {% for article in articles %}
             <tr>
                 <td><a href="{{ path('_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
-                <td><img src="{{ article.link }}" width="150"></td>
+                <td>{{ article.link }}</td>
                 <td>{{ article.description }}</td>
                 <td>{{ article.price }}</td>
                 <td>{{ article.quantity }}</td>
@@ -48,4 +48,9 @@
         </tbody>
     </table>
 
+    <ul>
+        <li>
+            <a href="{{ path('_new') }}">Create a new article</a>
+        </li>
+    </ul>
 {% endblock %}
